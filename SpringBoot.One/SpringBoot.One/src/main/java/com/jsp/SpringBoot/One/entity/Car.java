@@ -1,5 +1,10 @@
 package com.jsp.SpringBoot.One.entity;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,5 +23,7 @@ public class Car {
 		private String carcolor;
 		private double carprice;
 		@OneToOne
+		@Cascade(CascadeType.ALL)
+		@JsonIgnore
 		private Enginee enginee;
 }

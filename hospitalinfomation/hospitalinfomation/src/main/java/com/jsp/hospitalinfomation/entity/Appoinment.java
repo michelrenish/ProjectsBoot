@@ -1,5 +1,4 @@
-package com.jsp.SpringBoot.One.entity;
-
+package com.jsp.hospitalinfomation.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,13 +9,12 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Enginee {
+public class Appoinment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int eid;
-	private String etype;
-	private String horsepower;
-	@OneToOne(mappedBy = "enginee")
-	private Car car;
-	
+	private int aid;
+	private String doc_name;
+	private double aprice;
+	@OneToOne
+	private Prescription description;
 }
