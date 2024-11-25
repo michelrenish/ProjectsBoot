@@ -33,10 +33,8 @@ public class MedicineService {
 			rs.setCode(201);
 			return new ResponseEntity<ResponseStructur<Medicine>>(rs, HttpStatus.CREATED);
 		}
-		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-	
-	
 	public ResponseEntity<ResponseStructur<Medicine>> getMedicineId(int id) {
 		ResponseStructur<Medicine> rs = new ResponseStructur<Medicine>();
 		rs.setMessage("Medicine details of Id: "+id);
