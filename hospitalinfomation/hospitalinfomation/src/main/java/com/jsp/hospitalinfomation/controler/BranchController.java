@@ -1,5 +1,7 @@
 package com.jsp.hospitalinfomation.controler;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jsp.hospitalinfomation.entity.Branch;
+import com.jsp.hospitalinfomation.entity.Hospital;
 import com.jsp.hospitalinfomation.service.BranchService;
 import com.jsp.hospitalinfomation.utill.ResponseStructur;
 
@@ -26,4 +29,12 @@ public class BranchController {
 	public ResponseEntity<ResponseStructur<Branch>> getBranchById(@RequestParam(value="id") int id){
 		return branchService.getBranchById(id);
 	}
-}
+	
+	@GetMapping("/findByBranchName")
+	public ResponseEntity<ResponseStructur<List<Hospital>>> findByBranchName(@RequestParam(value="name") String name){
+		return branchService.findByBranchName(name);
+		}
+	}
+
+
+

@@ -30,5 +30,13 @@ public class HospitalService {
 		rs.setCode(201);
 		return new ResponseEntity<ResponseStructur<Hospital>>(rs,HttpStatus.OK);
 	}
+	
+	public ResponseEntity<ResponseStructur<Hospital>> findByName(String name){
+		ResponseStructur<Hospital> rs=new ResponseStructur<Hospital>();
+		rs.setMessage("Hospital Datails of Name: "+name);
+		rs.setData(hosDao.findByName(name));
+		rs.setCode(201);
+		return new ResponseEntity<ResponseStructur<Hospital>>(rs,HttpStatus.OK);
+	}
 
 }

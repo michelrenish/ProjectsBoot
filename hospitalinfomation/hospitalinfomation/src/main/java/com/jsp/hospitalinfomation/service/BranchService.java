@@ -25,9 +25,14 @@ public class BranchService {
 		Hospital hos = hosDao.getHospitalId(id);
 		if (hos != null) {
 			List<Branch> a1 = new ArrayList<Branch>();
-			a1.add(branch);
-			hos.setBranches(a1);
+			List<Branch> branches = hos.getBranches();
+			  if (branches == null) {
+	                branches = new ArrayList<>();
+	            }
+			  branches.add(branch);
+			hos.setBranches(branches);
 			branchDao.saveBranch(branch);
+			hosDao.saveHospital(hos);
 			ResponseStructur<Branch> rs = new ResponseStructur<Branch>();
 			rs.setMessage("Branch details Are saved");
 			rs.setCode(201);
@@ -46,5 +51,13 @@ public class BranchService {
 		rs.setCode(HttpStatus.OK.value());
 		rs.setData(branchDao.getBranchById(id));
 		return new ResponseEntity<ResponseStructur<Branch>>(rs, HttpStatus.OK);
+	}
+	
+	public ResponseEntity<ResponseStructur<List<Hospital>>> findByBranchName(String name){
+		ResponseStructur<List<Hospital>> rs = new ResponseStructur<List<Hospital>>();
+		rs.setMessage("Branch details of Name :" + name);
+		rs.setCode(HttpStatus.OK.value());
+		rs.setData(branchDao.findByBranchName(name));
+		return new ResponseEntity<ResponseStructur<List<Hospital>>>(rs, HttpStatus.OK);
 	}
 }

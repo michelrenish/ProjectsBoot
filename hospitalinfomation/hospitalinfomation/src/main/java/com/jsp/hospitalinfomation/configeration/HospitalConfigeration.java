@@ -1,5 +1,7 @@
 package com.jsp.hospitalinfomation.configeration;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -30,6 +32,6 @@ public class HospitalConfigeration {
 	        info.license(license);
 	        info.contact(c);
 	        
-			return new OpenAPI().info(info);
+			return new OpenAPI().info(info).servers(List.of(server));
 	}
 }

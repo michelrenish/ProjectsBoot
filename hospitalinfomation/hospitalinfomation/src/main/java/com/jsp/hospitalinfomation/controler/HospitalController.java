@@ -26,4 +26,8 @@ public class HospitalController {
 	public ResponseEntity<ResponseStructur<Hospital>> getHospitalId(@RequestParam(value="id") int id){
 		return service.getHospitalId(id);
 	}
+	@GetMapping("/findByName")
+	public ResponseEntity<ResponseStructur<Hospital>> findByName(@RequestParam(value ="name") String name){
+		return service.findByName(name);
+	}
 }

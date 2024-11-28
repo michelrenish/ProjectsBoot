@@ -25,4 +25,7 @@ public class HospitalDao {
 		}
 		return null;
 	}
+	public Hospital findByName(String name) {
+		return hosRepo.findByName(name);
+	}
 }
